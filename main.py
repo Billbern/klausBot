@@ -10,7 +10,8 @@ TOKEN = os.getenv('DISCORD_TOKEN')
 client = discord.Client()
 
 @client.event
-async def on_ready():
+async def on_member_join(member):
+    await member.create_dm() 
     pass  
 
 
