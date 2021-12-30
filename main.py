@@ -12,6 +12,7 @@ client = discord.Client()
 
 
 def getmembercount(gld):
+    print(gld)
     for guild in client.guilds:
         if guild.name == gld:
             return guild
@@ -29,6 +30,8 @@ async def on_message(message):
             memcount = getmembercount(message.guild)
             print(memcount)
             await message.channel.send(9)
+        if message.content.split("$")[1] == "Hi" or message.content.split("$")[1] == "Hello":
+            print(message)
     
 
 client.run(TOKEN)
