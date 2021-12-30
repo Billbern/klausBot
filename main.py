@@ -11,8 +11,7 @@ client = discord.Client()
 
 @client.event
 async def on_member_join(member):
-    await member.create_dm() 
-    pass  
+    print(f"{member} joined") 
 
 
-client.run(TOKEN) 
+client.run(TOKEN)
