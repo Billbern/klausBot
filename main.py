@@ -17,8 +17,8 @@ async def on_member_join(member):
 
 @client.event
 async def on_message(message):
-    if message.startswith(";$"):
-        if message.split("$")[1] == "count":
+    if message.content.startswith(";$"):
+        if message.content.split("$")[1] == "count":
             message.channel.send(message)
     
 
