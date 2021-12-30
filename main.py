@@ -19,8 +19,7 @@ async def on_member_join(member):
 async def on_message(message):
     if message.startswith(";$"):
         if message.split("$")[1] == "count":
-            print(message)
-            # message.channel.send()
+            message.channel.send(message)
     pass
     
 
