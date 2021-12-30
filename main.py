@@ -19,7 +19,9 @@ async def on_member_join(member):
 async def on_message(message):
     if message.content.startswith(";$"):
         if message.content.split("$")[1] == "count":
-            await message.channel.send(message)
+            memberCount = message.guild
+            print(memberCount)
+            await message.channel.send(9)
     
 
 client.run(TOKEN)
