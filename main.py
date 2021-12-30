@@ -12,8 +12,8 @@ client = discord.Client()
 
 
 def getmembercount(gld):
-    print(gld)
     for guild in client.guilds:
+        print(guild)
         if guild.name == gld:
             return guild
 
