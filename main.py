@@ -10,6 +10,13 @@ GUILD = os.getenv('GUILD_NAME')
 
 client = discord.Client()
 
+
+def getmembercount(gld):
+    for guild in client.guilds:
+        if guild.name == gld:
+            return guild
+
+
 @client.event
 async def on_member_join(member):
     await member.create_dm()
@@ -19,8 +26,8 @@ async def on_member_join(member):
 async def on_message(message):
     if message.content.startswith(";$"):
         if message.content.split("$")[1] == "count":
-            memberCount = message.guild
-            print(memberCount)
+            memcount = getmembercount(message.guild)
+            print(memcount)
             await message.channel.send(9)
     
 
