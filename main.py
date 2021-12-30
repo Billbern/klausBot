@@ -29,7 +29,7 @@ async def on_message(message):
             memcount = getmembercount(message.guild)
             await message.channel.send(memcount)
         if message.content.split("$")[1] == "Hi" or message.content.split("$")[1] == "Hello":
-            await message.channel.send(f"{message.client}Hello how are you")
+            await message.channel.send(f"{message.user} Hello how are you")
     
 
 client.run(TOKEN)
