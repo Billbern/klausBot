@@ -14,10 +14,17 @@ GUILD = os.getenv('GUILD_NAME')
 
 client = discord.Client()
 
+
 def get_members_count(gld):
+    bots = 0
+    humans = 0
     for guild in client.guilds:
         if guild.name == gld:
-            return guild.member_count
+            humans += guild.member_count 
+            for mem in guild.members:
+                if mem.bot:
+                    bots += 1
+    return (bots, humans - bots)  
 
 @client.event
 async def on_member_join(member):
@@ -32,10 +39,15 @@ async def on_message(message):
     if message.content.startswith(";$"):
         if message.content.split("$")[1] == "count":
             memcount = get_members_count(message.guild.name)
-            if memcount == 1:
-                await message.channel.send(f"There is only {memcount} member")
-            else:
-                await message.channel.send(f"There are only {memcount} members so far")
+            if memcount[1] == 1 and memcount[0] == 1:
+                await message.channel.send("There is a member and a bot")
+            elif memcount[1] > 1 and memcount[0] > 1:
+                await message.channel.send(f"There are {memcount[1]} members and {memcount[0]} bots  so far") 
+            elif memcount[1] > 1 and memcount[0] == 1:
+                await message.channel.send(f"There are {memcount[1]} members and a bot  so far")
+            elif memcount[1] == 1 and memcount[0] > 1:
+                await message.channel.send(f"There is a member and {memcount[0]} bots  so far")
+            
         if message.content.split("$")[1] == "Hi" or message.content.split("$")[1] == "Hello":
             await message.channel.send(f" {message.author.mention} Hello how are you")
     
