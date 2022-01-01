@@ -32,7 +32,7 @@ async def on_message(message):
     if message.content.startswith(";$"):
         if message.content.split("$")[1] == "count":
             memcount = get_member_count()
-            # await message.channel.send(memcount)
+            await message.channel.send("counted")
         if message.content.split("$")[1] == "Hi" or message.content.split("$")[1] == "Hello":
             await message.channel.send(f"@{message.author} Hello how are you")
     
