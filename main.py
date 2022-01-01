@@ -23,7 +23,7 @@ def get_members_count(gld):
 async def on_member_join(member):
     guild = member.guild
     if guild.system_channel is not None:
-        text_str = f"Hello @{member.name},\nWelcome to {guild.name}\nPlease introduce yourself"
+        text_str = f"Hello {member.mention},\nWelcome to {guild.name}\nPlease introduce yourself"
         await guild.system_channel.send(text_str)
 
 
@@ -37,7 +37,7 @@ async def on_message(message):
             else:
                 await message.channel.send(f"There are only {memcount} members so far")
         if message.content.split("$")[1] == "Hi" or message.content.split("$")[1] == "Hello":
-            await message.channel.send(f"@{message.author} Hello how are you")
+            await message.channel.send(f" {message.author.mention} Hello how are you")
     
 
 client.run(TOKEN)
